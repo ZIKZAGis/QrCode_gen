@@ -1,10 +1,15 @@
 import styles from "./Button.module.scss"
 
-const Button = () => {
+type ButtonPropsType = {
+    value: string
+    onClick: () => void
+}
+
+const Button = ({value, onClick}:ButtonPropsType) => {
     return (
-        <div className={styles.button}>
-            Кнопка
-        </div>
+        <button type="button" onClick={onClick} className={styles.button} id="download">
+            {value}
+        </button>
     )
 }
 

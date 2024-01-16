@@ -1,10 +1,16 @@
 import styles from "./Input.module.scss"
 
-const Input = () => {
+type onChangeValueType = {
+    onChangeValue: (e: React.HTMLInputTypeAttribute) => void
+}
+
+const Input = ({onChangeValue}:onChangeValueType) => {
     return (
-        <div className={styles.input}>
-            Input
-        </div>
+        <input 
+        type="text" 
+        placeholder="введите ссылку" 
+        onChange={(e) => onChangeValue(e.target.value)}
+        className={styles.input}/>
     )
 }
 

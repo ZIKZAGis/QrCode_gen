@@ -1,3 +1,14 @@
 .input {
-    color: gold;
+    box-sizing: border-box;
+    width: 80%;
+    height: 40px;
+    border: 2px solid red;
+    border-radius: 10px;
+    padding: 5px 10px;
+    outline: none;
+    margin: 0 auto;
+
+    &:focus {
+        border-color: green;
+    }
 }
