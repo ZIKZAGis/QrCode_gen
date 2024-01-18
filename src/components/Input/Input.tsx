@@ -10,8 +10,8 @@ const Input = ({onChangeValue, value}:onChangeValueType) => {
     return (
         <input 
         type="text" 
-        placeholder="Введите ссылку" 
-        onChange={(e) => onChangeValue(e)}
+        placeholder="Введите текст или ссылку" 
+        onChange={onChangeValue}
         className={styles.input}
         value={value}
         />
