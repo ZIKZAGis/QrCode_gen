@@ -13,6 +13,11 @@ function App() {
     QR.toDataURL(
       inputValue,
       {
+        margin: 3,
+        color: {
+          dark: '#000000',
+          light: '#0000'
+        },
         width:900
       },
       (err, url) => {
@@ -33,6 +38,7 @@ function App() {
   return (
     <div className={styles.app}>
       <div className={styles.container}>
+        <h1>QR Code Generator</h1>
         <Input onChangeValue={handleQrCodeValue} value={inputValue}/>
         <QrCodeField value={inputValue === '' ? 'https://github.com/ZIKZAGis' : inputValue}/>
         <div className={styles.button_wrapper}>
