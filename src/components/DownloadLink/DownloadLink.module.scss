@@ -2,21 +2,25 @@
     box-sizing: border-box;
     padding: 10px;
     border-radius: 5px;
-    color: rebeccapurple;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: white;
     font-weight: bold;
     border: 2px solid greenyellow;
+    outline: none;
     cursor: pointer;
     transition: opacity ease .3s;
 
     &:focus {
-        border: green;
+        border: 2px solid green;
+        color: white;
     }
 
     &:hover {
-        opacity: 0.7;
+        opacity: 0.6;
     }
 
     &:active {
-        opacity: 0.5;
+        opacity: 0.3;
     }
 }
