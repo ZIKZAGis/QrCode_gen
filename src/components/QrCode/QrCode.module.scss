@@ -1,7 +1,11 @@
 .qr_code {
     box-sizing: border-box;
-    border: 2px solid red;
-    margin: 0 auto;
+    margin-inline: auto;
+    width: 80vw;
+    max-width: 320px;
+    height: 80vw;
+    max-height: 320px;
+    margin-bottom: 20px;
 
     svg {
         width: 100%;

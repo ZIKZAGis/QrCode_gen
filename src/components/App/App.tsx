@@ -12,7 +12,7 @@ function App() {
   const [qrColor, setQrColor] = useState('#000000') ///черный QR код
   const [qrBgColor, setQrBgColor] = useState('#FFF') ///прозрачный фон #0000
   const [qrMargin, setQrMargin] = useState(3)
-  const [qrSize, setQrSize] = useState(900)
+  const [qrSize, setQrSize] = useState(256)
 
   const generateQrCode = () => {
     QR.toDataURL(
@@ -55,10 +55,17 @@ function App() {
           qrColor={qrColor}
           margin={qrMargin}
         />
-        <SettingsPanel/>
-        <div className={styles.button_wrapper}>
-          <DownloadLink qrCodeLink={qrCode} qr={inputValue ? inputValue : 'qr_Code'}/>
-        </div>
+        <SettingsPanel 
+          setQrColor={qrSetting.color}
+          setQrBgColor={qrSetting.bgColor}
+          setMargin={qrSetting.margin}
+          setQrSize={qrSetting.size}
+          qrBgColor={qrBgColor}
+          qrColor={qrColor}
+          margin={qrMargin}
+          qrSize={qrSize}
+        />
+        <DownloadLink qrCodeLink={qrCode} qr={inputValue ? inputValue : 'qr_Code'}/>
       </div>
     </div>
   );

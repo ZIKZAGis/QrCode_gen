@@ -1,18 +1,24 @@
 .link {
+    display: block;
+    width: fit-content;
+    margin-inline: auto;
     box-sizing: border-box;
     padding: 10px;
-    border-radius: 5px;
+    border-radius: 10px;
     text-decoration: none;
     text-transform: uppercase;
     color: white;
     font-weight: bold;
-    border: 2px solid greenyellow;
+    border: 2px solid #697FD9;
+    background-color: #8B95C2;
     outline: none;
     cursor: pointer;
     transition: opacity ease .3s;
+    margin-bottom: 20px;
 
     &:focus {
-        border: 2px solid green;
+        border: 2px solid #0B2CB3;
+        background-color: #6375c4;
         color: white;
     }
 
