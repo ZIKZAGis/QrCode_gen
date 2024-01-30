@@ -1,6 +1,11 @@
 body {
   margin: 0;
-  background-color: #000415;
+  background: linear-gradient(225deg, #0a0936, #100f28, #040323, #1a0634, #190d27, #100222, #051d32, #0c1a25, #021220);
+  background-size: 3000% 3000%;
+  -webkit-animation: bgGradient 30s ease infinite;
+  -moz-animation: bgGradient 30s ease infinite;
+  -o-animation: bgGradient 30s ease infinite;
+  animation: bgGradient 30s ease infinite;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -12,4 +17,26 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+
+@-webkit-keyframes bgGradient {
+  0%{background-position:0% 88%}
+  50%{background-position:100% 13%}
+  100%{background-position:0% 88%}
+}
+@-moz-keyframes bgGradient {
+  0%{background-position:0% 88%}
+  50%{background-position:100% 13%}
+  100%{background-position:0% 88%}
+}
+@-o-keyframes bgGradient {
+  0%{background-position:0% 88%}
+  50%{background-position:100% 13%}
+  100%{background-position:0% 88%}
+}
+@keyframes bgGradient {
+  0%{background-position:0% 88%}
+  50%{background-position:100% 13%}
+  100%{background-position:0% 88%}
 }

@@ -9,10 +9,11 @@ import SettingsPanel from '../SettingsPanel/SettingsPanel';
 function App() {
   const [inputValue, setInputValue] = useState('github.com/ZIKZAGis')
   const [qrCode, setQrCode] = useState('')
-  const [qrColor, setQrColor] = useState('#000000') ///черный QR код
-  const [qrBgColor, setQrBgColor] = useState('#FFF') ///прозрачный фон #0000
+  const [qrColor, setQrColor] = useState('#FFF') ///черный QR код
+  const [qrBgColor, setQrBgColor] = useState('#000000') ///прозрачный фон #0000
   const [qrMargin, setQrMargin] = useState(3)
   const [qrSize, setQrSize] = useState(256)
+  const [transparentBg, setTransparentBg] = useState(false)
 
   const generateQrCode = () => {
     QR.toDataURL(
@@ -37,33 +38,45 @@ function App() {
     color: (color: string) => setQrColor(color),
     bgColor: (color: string) => setQrBgColor(color),
     margin: (margin: number) => setQrMargin(margin),
-    size: (size: number) => setQrSize(size)
+    size: (size: number) => setQrSize(size),
+    transparencyBg: (transparentBg: boolean) => setTransparentBg(!transparentBg)
   }
 
   useEffect(() => {
     generateQrCode()
   })
 
+  useEffect(() => {
+    if (transparentBg) {
+      setQrBgColor('#0000')
+    } else {
+      setQrBgColor('#000000')
+    }
+  }, [transparentBg])
+
   return (
     <div className={styles.app}>
       <div className={styles.container}>
-        <h1>QR Code Generator</h1>
+        <h1>Генератор QR кода</h1>
         <Input onChangeValue={qrSetting.value} value={inputValue}/>
         <QrCodeField 
           value={inputValue === '' ? 'https://github.com/ZIKZAGis' : inputValue}
           bgColor={qrBgColor}
           qrColor={qrColor}
           margin={qrMargin}
+          transparent={transparentBg}
         />
         <SettingsPanel 
           setQrColor={qrSetting.color}
           setQrBgColor={qrSetting.bgColor}
           setMargin={qrSetting.margin}
           setQrSize={qrSetting.size}
+          switchTransparency={qrSetting.transparencyBg}
           qrBgColor={qrBgColor}
           qrColor={qrColor}
           margin={qrMargin}
           qrSize={qrSize}
+          transparent={transparentBg}
         />
         <DownloadLink qrCodeLink={qrCode} qr={inputValue ? inputValue : 'qr_Code'}/>
       </div>

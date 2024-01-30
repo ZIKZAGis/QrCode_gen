@@ -12,6 +12,10 @@
     font-weight: bold;
     margin-bottom: 20px;
 
+    &::placeholder {
+        color: #fffdfd9a;
+    }
+
     &:focus {
         border-color: #0B2CB3;
         background-color: #6375c4;
