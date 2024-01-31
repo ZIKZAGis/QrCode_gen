@@ -59,7 +59,39 @@
         margin-bottom: 20px;
     }
 
-    .color_setting:last-child {
-        grid-column: initial;
+    .color_setting {
+        &:not(:last-child) {
+            position: relative;
+            box-sizing: border-box;
+            border: 2px solid red;
+            border-radius: 10px;
+            background-color: rgba(44, 44, 44, 0.267);
+            height: 27px;
+            overflow: hidden;
+
+            &::after {
+                position: absolute;
+                content: '^';
+                right: 10px;
+                top: 0;
+                transform: rotate(180deg);
+                transition: all .5s ease;
+            }
+        }
+
+        &:last-child {
+            grid-column: initial;
+        }
+    }
+
+    .color_setting_open {
+        &:not(:last-child) {
+            height: 100%;
+            padding-bottom: 20px;
+
+            &::after {
+                transform: rotate(0deg);
+            }
+        }
     }
 }
