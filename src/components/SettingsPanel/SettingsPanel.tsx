@@ -16,13 +16,16 @@ type SettingsPanelPropsType = {
 
 const SettingsPanel = ({setQrColor, setQrBgColor, setMargin, setQrSize, switchTransparency, qrBgColor, qrColor, margin, qrSize, transparent}: SettingsPanelPropsType) => {
     const step = 256
-
+    const settings = document.querySelectorAll(`.${styles.color_setting}:not(:last-child)`)
+ 
+    
     //---------ЗАМЕНИТЬ КЛИК ПО ПАНЕЛИ, НА КЛИК ПО КНОПКЕ!!!
 
     const toggleSettingVisibility = (e: any) => {
-        const settings = document.querySelectorAll(`.${styles.color_setting}:not(:last-child)`)
         settings.forEach((el) => {
-            el.classList.remove(styles.color_setting_open)
+            if (el !== e.target) {
+                el.classList.remove(styles.color_setting_open)
+            }
         })
 
         if (e.target.classList.contains(styles.color_setting)) {
@@ -31,21 +34,21 @@ const SettingsPanel = ({setQrColor, setQrBgColor, setMargin, setQrSize, switchTr
     }
 
     return (
-        <div className={styles.wrapper}  onClick={toggleSettingVisibility}>
-            <div className={styles.color_setting}>
+        <div className={styles.wrapper}  onClick={toggleSettingVisibility} id='wrapper'>
+            <div className={styles.color_setting} id='color_setting'>
                 <p>Цвет QR кода</p>
                 <HexColorPicker color={qrColor} onChange={setQrColor}/>
             </div>
-            <div className={styles.color_setting} style={{opacity: transparent ? 0.15 : 1}}>
+            <div className={styles.color_setting} style={{opacity: transparent ? 0.15 : 1}} id='colorBg_setting'>
                 <p>Цвета фона</p>
                 <HexColorPicker color={qrBgColor} onChange={setQrBgColor}/>
                 {transparent && <div className={styles.block}></div>}
             </div>
-            <div className={styles.color_setting}>
+            <div className={styles.color_setting} id='margin_setting'>
                <p>Поле</p>
                <input type="range" id='margin' name='margin' value={margin} min="0" max="10" onChange={(e) => setMargin(+e.target.value)}/>
             </div>
-            <div className={styles.color_setting}>
+            <div className={styles.color_setting} id='size_setting'>
                <p>Размер {qrSize}px</p>
                <input type="range" id='size' name='size' value={qrSize / step} min="1" max="8" onChange={(e) => setQrSize(step * +e.target.value)}/>
             </div>

@@ -7,21 +7,16 @@
     border-radius: 10px;
     text-decoration: none;
     text-transform: uppercase;
-    color: white;
+    color: #02061A;
     font-weight: bold;
-    border: 2px solid #697FD9;
-    background-color: #8B95C2;
+    border: 2px solid #02061A;
+    background-color: #fff;
     outline: none;
     cursor: pointer;
     transition: opacity ease .3s;
     margin-bottom: 30px;
 
-    &:focus {
-        border: 2px solid #0B2CB3;
-        background-color: #6375c4;
-        color: white;
-    }
-
+    &:focus,
     &:hover {
         opacity: 0.6;
     }
