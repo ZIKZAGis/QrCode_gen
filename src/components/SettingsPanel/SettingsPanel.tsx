@@ -1,5 +1,6 @@
 import styles from './SettingsPanel.module.scss'
 import { HexColorPicker } from 'react-colorful'
+import { FaChevronDown } from "react-icons/fa";
 
 type SettingsPanelPropsType = {
     setQrColor: (color: string) => void
@@ -18,44 +19,54 @@ const SettingsPanel = ({setQrColor, setQrBgColor, setMargin, setQrSize, switchTr
     const step = 256
     const settings = document.querySelectorAll(`.${styles.color_setting}:not(:last-child)`)
  
-    
-    //---------ЗАМЕНИТЬ КЛИК ПО ПАНЕЛИ, НА КЛИК ПО КНОПКЕ!!!
-
     const toggleSettingVisibility = (e: any) => {
         settings.forEach((el) => {
-            if (el !== e.target) {
+            if (el !== e.target.parentElement) {
                 el.classList.remove(styles.color_setting_open)
             }
         })
 
-        if (e.target.classList.contains(styles.color_setting)) {
-            e.target.classList.toggle(styles.color_setting_open)
+        if (e.target.parentElement.classList.contains(styles.color_setting)) {
+            e.target.parentElement.classList.toggle(styles.color_setting_open)
         }
     }
 
     return (
-        <div className={styles.wrapper}  onClick={toggleSettingVisibility} id='wrapper'>
-            <div className={styles.color_setting} id='color_setting'>
+        <div className={styles.wrapper}>
+            <div className={styles.color_setting}>
                 <p>Цвет QR кода</p>
                 <HexColorPicker color={qrColor} onChange={setQrColor}/>
+                <button type='button' onClick={toggleSettingVisibility}>
+                    <FaChevronDown />
+                </button>
             </div>
-            <div className={styles.color_setting} style={{opacity: transparent ? 0.15 : 1}} id='colorBg_setting'>
+            <div className={styles.color_setting} style={{opacity: transparent ? 0.15 : 1}}>
                 <p>Цвета фона</p>
                 <HexColorPicker color={qrBgColor} onChange={setQrBgColor}/>
                 {transparent && <div className={styles.block}></div>}
-            </div>
-            <div className={styles.color_setting} id='margin_setting'>
-               <p>Поле</p>
-               <input type="range" id='margin' name='margin' value={margin} min="0" max="10" onChange={(e) => setMargin(+e.target.value)}/>
-            </div>
-            <div className={styles.color_setting} id='size_setting'>
-               <p>Размер {qrSize}px</p>
-               <input type="range" id='size' name='size' value={qrSize / step} min="1" max="8" onChange={(e) => setQrSize(step * +e.target.value)}/>
+                <button type='button' onClick={toggleSettingVisibility}>
+                    <FaChevronDown />
+                </button>
             </div>
             <div className={styles.color_setting}>
-                <button type='button' onClick={() => switchTransparency(transparent)}>Прозрачный фон</button>
-                {transparent && <div>ON</div>}
-                {!transparent && <div>OFF</div>}
+               <p>Поле</p>
+               <input type="range" id='margin' name='margin' value={margin} min="0" max="10" onChange={(e) => setMargin(+e.target.value)}/>
+               <button type='button' onClick={toggleSettingVisibility}>
+                    <FaChevronDown />
+               </button>
+            </div>
+            <div className={styles.color_setting}>
+               <p>Размер {qrSize}px</p>
+               <input type="range" id='size' name='size' value={qrSize / step} min="1" max="8" onChange={(e) => setQrSize(step * +e.target.value)}/>
+               <button type='button' onClick={toggleSettingVisibility}>
+                    <FaChevronDown />
+               </button>
+            </div>
+            <div className={styles.color_setting}>
+                <button type='button' onClick={() => switchTransparency(transparent)}>
+                    <p>Прозрачный фон</p>
+                    <span style={transparent ? {width: '100%', backgroundColor: 'green'} : {}}></span>
+                </button>
             </div>
         </div>
     )
