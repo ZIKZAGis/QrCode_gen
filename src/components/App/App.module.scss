@@ -1,3 +1,5 @@
+@import '../../variables.scss';
+
 .app {
   min-height: 100vh;
 }
@@ -18,7 +20,7 @@
 
   h1 {
     font-size: clamp(28px, 2vw, 50px);
-    color: #02061A;
+    color: $accent_color;
     margin: 20px 0;
   }
 }

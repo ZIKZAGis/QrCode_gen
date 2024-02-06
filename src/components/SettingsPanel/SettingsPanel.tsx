@@ -63,9 +63,13 @@ const SettingsPanel = ({setQrColor, setQrBgColor, setMargin, setQrSize, switchTr
                </button>
             </div>
             <div className={styles.color_setting}>
-                <button type='button' onClick={() => switchTransparency(transparent)}>
+                <button 
+                    type='button' 
+                    onClick={() => switchTransparency(transparent)}
+                    style={transparent ? {border: '2px solid #c3073f', backgroundColor: '#9507401c'} : {border: '2px solid #950740', backgroundColor: '#950740'}}
+                >
                     <p>Прозрачный фон</p>
-                    <span style={transparent ? {width: '100%', backgroundColor: 'green'} : {}}></span>
+                    <span style={transparent ? {left: '262px'} : {}}></span>
                 </button>
             </div>
         </div>

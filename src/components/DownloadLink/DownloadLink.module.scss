@@ -1,3 +1,5 @@
+@import '../../variables.scss';
+
 .link {
     display: block;
     width: fit-content;
@@ -7,21 +9,21 @@
     border-radius: 10px;
     text-decoration: none;
     text-transform: uppercase;
-    color: #02061A;
+    color: $text_color;
     font-weight: bold;
-    border: 2px solid #02061A;
-    background-color: #fff;
+    border: 2px solid $secondary_color;
+    background-color: $accent_color;
     outline: none;
     cursor: pointer;
-    transition: opacity ease .3s;
+    transition: $animation;
     margin-bottom: 30px;
 
     &:focus,
     &:hover {
-        opacity: 0.6;
+        background-color: darken($accent_color, 7);
     }
 
     &:active {
-        opacity: 0.3;
+        background-color: $additional_color;
     }
 }
