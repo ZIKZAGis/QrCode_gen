@@ -78,7 +78,7 @@ function App() {
           qrSize={qrSize}
           transparent={transparentBg}
         />
-        <DownloadLink qrCodeLink={qrCode} qr={inputValue ? inputValue : 'qr_Code'}/>
+        <DownloadLink qrCodeLink={qrCode} qr={inputValue}/>
       </div>
     </div>
   );
